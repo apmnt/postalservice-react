@@ -5,19 +5,19 @@ export const PageFooter = () => {
   const resourceList = [
     {
       path: "https://auth0.com/why-auth0/",
-      label: "Why Auth0",
+      label: "Placeholder 1",
     },
     {
       path: "https://auth0.com/docs/get-started",
-      label: "How It Works",
+      label: "Placeholder 2",
     },
     {
       path: "https://auth0.com/blog/developers/",
-      label: "Developer Blog",
+      label: "Placeholder 3",
     },
     {
       path: "https://auth0.com/contact-us",
-      label: "Contact an Expert",
+      label: "Placeholder 4",
     },
   ];
 
@@ -28,17 +28,13 @@ export const PageFooter = () => {
           <div className="page-footer-info__message">
             <p className="page-footer-message__headline">
               <span>This sample application is brought to you by&nbsp;</span>
-              <PageFooterHyperlink path="https://auth0.com/">
-                Auth0
-              </PageFooterHyperlink>
             </p>
             <p className="page-footer-message__description">
               <PageFooterHyperlink path="https://auth0.com/docs/quickstarts/">
                 <span>
-                  Securely implement authentication using Auth0 on any stack and
-                  any device&nbsp;
+                  PlaceholderPlaceholderPlaceholderPlaceholderPlaceholder&nbsp;
                 </span>
-                <u>in less than 10 minutes</u>
+                <u>Placeholder</u>
               </PageFooterHyperlink>
             </p>
           </div>
@@ -76,7 +72,7 @@ export const PageFooter = () => {
               height="22.22"
             />
             <PageFooterHyperlink path="https://auth0.com/">
-              Auth0 Inc
+              placeholder
             </PageFooterHyperlink>
           </div>
         </div>

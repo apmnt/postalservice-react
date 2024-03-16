@@ -1,11 +1,12 @@
 import React from "react";
-import { Auth0Features } from "../components/auth0-features";
-import { HeroBanner } from "../components/hero-banner";
+// import { Auth0Features } from "../components/auth0-features";
 import { PageLayout } from "../components/page-layout";
+import { MercariListings } from "../components/mercari-listings";
+import { FrilListings } from "../components/fril-listings";
 
 export const HomePage = () => (
   <PageLayout>
-    <HeroBanner />
-    <Auth0Features />
+    <MercariListings />
+    <FrilListings />
   </PageLayout>
 );

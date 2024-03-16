@@ -33,7 +33,7 @@
   height: 100%;
 
   /* responsive */
-
+  margin-left: 0px;
   margin-right: 64px;
 }
 
@@ -180,4 +180,13 @@
   .nav-bar__buttons {
     margin-left: 24px;
   }
+}
+
+.nav-bar__title {
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 4rem;
+  margin: 0;
+  padding: 0;
+  color: aliceblue;
 }

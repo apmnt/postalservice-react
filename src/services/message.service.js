@@ -1,7 +1,10 @@
+import { callMercariApi } from "./external-api.service";
+
 export const getPublicResource = async () => {
+  var prods = await callMercariApi();
   return {
     data: {
-      text: "This is a public message.",
+      text: prods,
     },
   };
 };

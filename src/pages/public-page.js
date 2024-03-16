@@ -17,7 +17,7 @@ export const PublicPage = () => {
       }
 
       if (data) {
-        setMessage(JSON.stringify(data, null, 2));
+        setMessage(JSON.stringify(data.text, null, 2));
       }
 
       if (error) {
