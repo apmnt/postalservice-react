@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { Listing } from "./listing";
 import LoadMoreButton from "./buttons/load-more-button";
+import { PageLoader } from "./page-loader";
 
 export const BaseListings = ({
   site,
@@ -81,7 +82,7 @@ export const BaseListings = ({
           />
         ))}
       </div>
-      {loading && <div className="loader"> Loading new listings ...</div>}
+      {loading && <PageLoader />}
       {!loading && !reachedEnd && (
         <LoadMoreButton
           className="listings__load-more"
