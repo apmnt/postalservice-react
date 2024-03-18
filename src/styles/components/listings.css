@@ -7,12 +7,12 @@
 }
 
 .listing {
-  overflow: auto;
+  overflow: hidden;
 }
 
 .listing__picture {
-  height: 300px;
-  width: 280px;
+  width: 100%;
+  aspect-ratio: 1;
   object-fit: cover;
   background-color: lightgrey;
 }
@@ -35,8 +35,19 @@
   font-style: italic;
 }
 
+.listings__title {
+  font-weight: 100;
+}
+
+.listings__line {
+  margin-top: 2%;
+}
+
 @media only screen and (max-width: 640px) {
   .listings__grid {
-    grid-template-columns: repeat(2, minmax(100px, 0.5fr));
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+  }
+  .listing__picture {
+    width: 100%;
   }
 }
