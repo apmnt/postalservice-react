@@ -31,9 +31,7 @@ export const PageFooter = () => {
             </p>
             <p className="page-footer-message__description">
               <PageFooterHyperlink path="https://auth0.com/docs/quickstarts/">
-                <span>
-                  PlaceholderPlaceholderPlaceholderPlaceholderPlaceholder&nbsp;
-                </span>
+                <span>Placeholder &nbsp;</span>
                 <u>Placeholder</u>
               </PageFooterHyperlink>
             </p>
