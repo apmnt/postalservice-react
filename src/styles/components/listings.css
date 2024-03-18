@@ -10,6 +10,11 @@
   overflow: hidden;
 }
 
+.listing a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .listing__picture {
   width: 100%;
   aspect-ratio: 1;
