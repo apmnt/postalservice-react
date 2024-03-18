@@ -22,5 +22,6 @@
 @media only screen and (max-width: 640px) {
   .page-layout__content {
     margin-top: 6.4rem;
+    max-width: 95%;
   }
 }
