@@ -13,6 +13,7 @@ const LoadMoreButton = ({ visibleCount, listingsLength, loadMore }) => {
         fontStyle: "italic",
         backgroundColor: "transparent",
         border: "none",
+        color: "black",
       }}
     >
       Show more

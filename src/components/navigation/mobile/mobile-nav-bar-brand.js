@@ -5,7 +5,7 @@ export const MobileNavBarBrand = ({ handleClick }) => {
   return (
     <div onClick={handleClick} className="mobile-nav-bar__brand">
       <NavLink to="/">
-        <h1 className="nav-bar__title">Postal Service</h1>
+        <h1 className="nav-bar__title-mobile">Postal Service</h1>
         {/* <img
           className="mobile-nav-bar__logo"
           src="https://cdn.auth0.com/blog/hub/code-samples/hello-world/auth0-logo.svg"

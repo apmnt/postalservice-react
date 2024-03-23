@@ -66,7 +66,7 @@ export const BaseListings = ({
 
   return (
     <div className="listings">
-      <h2 className="listings__title">{title}</h2>
+      <h4 className="listings__title">{title}</h4>
       <div className="listings__grid">
         {listings.slice(0, visibleCount).map((listing, index) => (
           <Listing

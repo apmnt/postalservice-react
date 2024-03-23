@@ -4,15 +4,17 @@ import SearchBar from "../components/search-bar";
 import { BaseListings } from "../components/base-listings";
 
 export const HomePage = () => {
-  const [searchTerm, setSearchTerm] = useState("junya");
+  const [searchTerm, setSearchTerm] = useState(""); // Add search state
 
   const handleSearch = (term) => {
+    console.log("handled seearch in homepage", term);
     setSearchTerm(term);
   };
 
   return (
-    <PageLayout>
+    <PageLayout onSearch={handleSearch}>
       <SearchBar onSearch={handleSearch} />
+      <h6>Search Results for: {searchTerm}</h6>
       <BaseListings
         key={`mercari-${searchTerm}`}
         site="mercari"

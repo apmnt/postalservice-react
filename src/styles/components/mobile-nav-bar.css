@@ -10,7 +10,8 @@
 
   z-index: 300;
 
-  background-color: var(--black);
+  backdrop-filter: blur(20px);
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 .mobile-nav-bar {
@@ -24,7 +25,7 @@
   height: 6.4rem;
   max-width: 1200px;
 
-  padding: 0.8rem 1.6rem;
+  padding: 0.6rem 1rem;
   margin: 0;
 }
 
@@ -57,16 +58,16 @@
   position: fixed;
   left: 0;
   top: 6.4rem;
-  background-color: var(--black);
+  backdrop-filter: blur(20px);
+  background-color: rgba(255, 255, 255, 0.7);
 
   z-index: 300;
 }
 
 .mobile-nav-bar__toggle {
-  margin-left: 2.4rem;
   font-size: 3.6rem;
   cursor: pointer;
-  color: aliceblue;
+  color: dark-aluminium;
 }
 
 .mobile-nav-bar__tabs {
@@ -88,8 +89,6 @@
   line-height: 16px;
 
   padding: 3.2rem 2.4rem;
-  background-color: var(--black);
-  color: var(--white);
   width: 100%;
   box-shadow: rgb(90 95 102) 0-1.5px 0 inset;
 }
@@ -121,7 +120,12 @@
   display: flex;
   justify-content: center;
   padding: 3.2rem;
-  background-color: var(--black);
+}
+
+.nav-bar__title-mobile {
+  margin: 0;
+  font-weight: 100;
+  font-size: 2.4rem;
 }
 
 @media only screen and (max-width: 640px) and (hover: none) {

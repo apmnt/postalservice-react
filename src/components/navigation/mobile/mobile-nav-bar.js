@@ -3,6 +3,8 @@ import { MobileMenuToggleButton } from "./mobile-menu-toggle-button";
 import { MobileNavBarBrand } from "./mobile-nav-bar-brand";
 import { MobileNavBarButtons } from "./mobile-nav-bar-buttons";
 import { MobileNavBarTabs } from "./mobile-nav-bar-tabs";
+import MobileSearchButton from "./mobile-search-button";
+import MobileSearchBar from "./mobile-search-bar";
 
 const MobileMenuState = {
   CLOSED: "closed",
@@ -14,7 +16,11 @@ const MobileMenuIcon = {
   MENU: "menu",
 };
 
-export const MobileNavBar = () => {
+export const MobileNavBar = ({
+  onSearch,
+  isSearchActive,
+  setIsSearchActive,
+}) => {
   const [mobileMenuState, setMobileMenuState] = React.useState(
     MobileMenuState.CLOSED
   );
@@ -46,21 +52,39 @@ export const MobileNavBar = () => {
     }
   };
 
+  const handleSearchClick = () => {
+    setIsSearchActive(!isSearchActive);
+    if (isMobileMenuOpen()) {
+      closeMobileMenu();
+    }
+  };
+
   return (
     <div className="mobile-nav-bar__container">
       <nav className="mobile-nav-bar">
-        <MobileNavBarBrand handleClick={closeMobileMenu} />
-        <MobileMenuToggleButton
-          icon={mobileMenuIcon}
-          handleClick={toggleMobileMenu}
-        />
+        <>
+          {isSearchActive && <MobileSearchBar onSearch={onSearch} />}
 
-        {isMobileMenuOpen() && (
-          <div className="mobile-nav-bar__menu">
-            <MobileNavBarTabs handleClick={closeMobileMenu} />
-            <MobileNavBarButtons />
-          </div>
-        )}
+          {!isSearchActive && (
+            <MobileNavBarBrand handleClick={closeMobileMenu} />
+          )}
+
+          <MobileSearchButton onSearch={handleSearchClick} />
+
+          {!isSearchActive && (
+            <MobileMenuToggleButton
+              icon={mobileMenuIcon}
+              handleClick={toggleMobileMenu}
+            />
+          )}
+
+          {isMobileMenuOpen() && (
+            <div className="mobile-nav-bar__menu">
+              <MobileNavBarTabs handleClick={closeMobileMenu} />
+              <MobileNavBarButtons />
+            </div>
+          )}
+        </>
       </nav>
     </div>
   );

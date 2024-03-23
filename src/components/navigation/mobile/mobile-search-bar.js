@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-const SearchBar = ({ onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState("");
-
+const MobileSearchBar = ({ onSearch, searchTerm }) => {
   const handleSearch = (event) => {
     if (event.key === "Enter") {
       console.log("searchTerm", searchTerm);
@@ -11,17 +9,15 @@ const SearchBar = ({ onSearch }) => {
   };
 
   const handleChange = (event) => {
-    setSearchTerm(event.target.value);
+    console.log("searchTerm", event.target.value);
+    searchTerm = event.target.value;
   };
 
   return (
-    <div
-      className="search-bar-container"
-      style={{ display: window.innerWidth < 768 ? "none" : "block" }}
-    >
+    <div className="mobile-search-bar-container">
       <input
         type="text"
-        className="search-bar"
+        className="mobile-search-bar"
         placeholder="Search..."
         value={searchTerm}
         onChange={handleChange}
@@ -31,4 +27,4 @@ const SearchBar = ({ onSearch }) => {
   );
 };
 
-export default SearchBar;
+export default MobileSearchBar;

@@ -2,7 +2,7 @@
   border: 0;
   border-radius: 0.8rem;
 
-  font-family: var(--font-primary);
+  font-family: var(--font-mono);
   font-weight: 600;
   color: var(--white);
 
@@ -39,11 +39,11 @@
 
 .button--secondary {
   background-color: var(--white);
-  color: var(--black);
+  color: var(--dark-aluminium);
 }
 
 .button--secondary:hover {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgb(69, 0, 0);
 }
 
 @media only screen and (max-width: 480px) {
@@ -71,15 +71,15 @@
 .button__logout {
   min-width: 8.4rem;
 
-  border: 0.1rem solid var(--indigo);
+  border: 0.1rem solid var(--dark-aluminium);
   color: var(--white);
-  background: var(--indigo);
+  background-color: rgba(0, 0, 0, 0.8);
   width: 50%;
   font-size: 1.6rem;
 
   margin-right: 1.6rem;
 
-  font-family: var(--font-primary);
+  font-family: var(--font-mono);
   font-style: normal;
   font-weight: 600;
   line-height: 3.2rem;
@@ -96,8 +96,8 @@
 .button__sign-up {
   min-width: 8.4rem;
 
-  border: 0.1rem solid var(--white);
-  color: var(--white);
+  border: 0.1rem solid var(--black);
+  color: var(--black);
   background-color: transparent;
   width: 50%;
   font-size: 1.6rem;
