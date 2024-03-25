@@ -93,7 +93,7 @@ export const BaseListings = ({
               style: "currency",
               currency: "JPY",
             })}
-            size={listing.size}
+            size={listing.size || "-"}
             pictureUrl={listing.img}
             url={listing.url}
           />
