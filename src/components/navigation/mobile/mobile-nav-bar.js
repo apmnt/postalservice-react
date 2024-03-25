@@ -28,12 +28,18 @@ export const MobileNavBar = () => {
 
   const closeMobileMenu = () => {
     document.body.classList.remove("mobile-scroll-lock");
+    document
+      .querySelector(".mobile-nav-bar__container")
+      .classList.remove("menu-open");
     setMobileMenuState(MobileMenuState.CLOSED);
     setMobileMenuIcon(MobileMenuIcon.MENU);
   };
 
   const openMobileMenu = () => {
     document.body.classList.add("mobile-scroll-lock");
+    document
+      .querySelector(".mobile-nav-bar__container")
+      .classList.add("menu-open");
     setMobileMenuState(MobileMenuState.OPEN);
     setMobileMenuIcon(MobileMenuIcon.CLOSE);
   };

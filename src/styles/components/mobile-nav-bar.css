@@ -5,9 +5,6 @@
   justify-content: center;
   flex-shrink: 0;
   width: 100%;
-
-  box-shadow: rgb(90 95 102) 0-1.5px 0 inset;
-
   z-index: 300;
 
   backdrop-filter: blur(20px);
@@ -15,6 +12,12 @@
     rgba(255, 255, 255, 1) 30%,
     rgba(255, 255, 255, 0.8)
   );
+}
+
+.mobile-nav-bar__container.menu-open {
+  backdrop-filter: none;
+  background: white;
+  box-shadow: rgb(90 95 102) 0-1.5px 0 inset;
 }
 
 .mobile-nav-bar {
@@ -62,8 +65,10 @@
   left: 0;
   top: 6.4rem;
   backdrop-filter: blur(20px);
-  background-color: rgba(255, 255, 255, 0.7);
-
+  background: linear-gradient(
+    rgba(255, 255, 255, 1) 30%,
+    rgba(255, 255, 255, 0.8)
+  );
   z-index: 300;
 }
 
