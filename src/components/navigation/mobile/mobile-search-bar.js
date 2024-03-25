@@ -18,7 +18,7 @@ const MobileSearchBar = ({ onSearch, searchTerm }) => {
       <input
         type="text"
         className="mobile-search-bar"
-        placeholder="Search..."
+        placeholder="Search for something..."
         value={searchTerm}
         onChange={handleChange}
         onKeyDown={handleSearch}
