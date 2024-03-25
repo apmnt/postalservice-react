@@ -25,3 +25,21 @@
     max-width: 95%;
   }
 }
+
+.full-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vh;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.search-tools-container {
+  margin-top: 20px;
+}
+
+.search-results-for {
+  font-family: var(--font-mono);
+}
