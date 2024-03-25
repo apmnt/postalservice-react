@@ -41,6 +41,13 @@ export const HomePage = () => {
     return filterValues.length;
   };
 
+  const formatSearchParams = () => {
+    return Object.entries(searchParams)
+      .filter(([key, value]) => value !== null && value !== "")
+      .map(([key, value]) => `${key}: ${value}`)
+      .join(", ");
+  };
+
   return (
     <div>
       {isRefineVisible ? (
@@ -63,7 +70,7 @@ export const HomePage = () => {
             </button>{" "}
           </div>
           <h6 className="search-results-for">
-            Search results for: {searchTerm}
+            Search results for: {formatSearchParams()}
           </h6>
           <BaseListings
             key={`mercari-${searchTerm}`}
