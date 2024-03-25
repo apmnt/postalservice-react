@@ -25,6 +25,17 @@ button {
   background-color: white;
 }
 
+.keyword {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-size: 11px;
+  color: #888;
+  margin-bottom: 10px;
+}
+
 .filter-header {
   display: flex;
   justify-content: flex-start;

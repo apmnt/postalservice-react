@@ -110,10 +110,9 @@ const RefineView = ({ handleCancelClick, onApplyFilters, appliedFilters }) => {
     console.log(filterObject);
   };
 
-  // Use useEffect to update selectedFilters when appliedFilters changes
   useEffect(() => {
-    console.log(Object.values(appliedFilters).flat());
-    setSelectedFilters(Object.values(appliedFilters).flat());
+    const { keyword, ...otherFilters } = appliedFilters;
+    setSelectedFilters(Object.values(otherFilters).flat());
   }, [appliedFilters]);
 
   return (
@@ -124,6 +123,11 @@ const RefineView = ({ handleCancelClick, onApplyFilters, appliedFilters }) => {
             <button className="cancel-button" onClick={handleCancelClick}>
               CANCEL
             </button>
+            <span className="keyword">
+              {appliedFilters.keyword
+                ? appliedFilters.keyword
+                : "NO KEYWORD APPLIED"}
+            </span>{" "}
           </div>
           <div className="selected-filters">
             {selectedFilters.length === 0 ? (
