@@ -22,7 +22,7 @@ body {
   background-color: var(--white);
 
   color: var(--black);
-  font-family: var(--font-mono);
+  font-family: var(--font-primary);
 
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-font-smoothing: antialiased;
@@ -37,7 +37,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-mono);
+  font-family: var(--font-primary);
   font-weight: 600;
   color: rgba(0, 0, 0, 0.86);
 }
@@ -150,5 +150,12 @@ code {
 @media only screen and (max-width: 640px) {
   .mobile-scroll-lock {
     overflow: hidden;
+  }
+  html {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    ::-webkit-scrollbar {
+      display: none;
+    }
   }
 }
