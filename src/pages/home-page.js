@@ -8,7 +8,7 @@ export const HomePage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchParams, setSearchParams] = useState({
     keyword: searchTerm,
-    size: "M",
+    size: null,
   });
   const [isRefineVisible, setIsRefineVisible] = useState(false);
 
@@ -33,6 +33,14 @@ export const HomePage = () => {
     setSearchParams(appliedFilters);
   };
 
+  const getNumberOfSelectedFilters = () => {
+    const { keyword, ...otherFilters } = searchParams;
+    const filterValues = Object.values(otherFilters)
+      .flat()
+      .filter((value) => value !== null && value !== "");
+    return filterValues.length;
+  };
+
   return (
     <div>
       {isRefineVisible ? (
@@ -48,7 +56,11 @@ export const HomePage = () => {
             style={{ display: "flex", flexDirection: "row" }}
           >
             <SearchBar onSearch={handleSearch} />
-            <button onClick={handleRefineClick}>Refine</button>
+            <button className="refine-button" onClick={handleRefineClick}>
+              REFINE{" "}
+              {getNumberOfSelectedFilters() > 0 &&
+                `(${getNumberOfSelectedFilters()})`}
+            </button>{" "}
           </div>
           <h6 className="search-results-for">
             Search results for: {searchTerm}
