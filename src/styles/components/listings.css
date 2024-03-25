@@ -22,8 +22,13 @@
   background-color: lightgrey;
 }
 
+.listings__title {
+  font-family: var(--font-mono);
+}
+
 .listing__text {
   font-size: small;
+  font-family: var(--font-mono);
   margin-top: 5px;
 }
 
