@@ -6,9 +6,8 @@ import { PageLoader } from "./page-loader";
 
 export const BaseListings = ({
   site,
-  keyword,
-  size,
   title,
+  searchParams,
   initialVisibleCount = 40,
   loadMoreStep = 40,
 }) => {
@@ -19,15 +18,33 @@ export const BaseListings = ({
   const [reachedEnd, setReachedEnd] = useState(false);
 
   const fetchMoreProducts = async (page) => {
+    let keyword = "";
+    if (searchParams && searchParams.keyword) {
+      keyword = searchParams.keyword;
+    }
+    let size = "";
+    if (searchParams && searchParams.sizes && searchParams.sizes.length > 0) {
+      size =
+        searchParams.sizes.length === 1
+          ? searchParams.sizes[0]
+          : searchParams.sizes.join(",");
+    }
     console.log("fetchMoreProducts", page, site, keyword, size, loadMoreStep);
     if (reachedEnd) {
       return;
     }
     try {
+      let url = `https://postalservice-flask-api.vercel.app/?site=${site}&page=${page}`;
+
+      if (keyword) {
+        url += `&keyword=${keyword}`;
+      }
+
+      if (size) {
+        url += `&size=${size}`;
+      }
       setLoading(true);
-      const response = await axios.get(
-        `https://postalservice-flask-api.vercel.app/?site=${site}&keyword=${keyword}&size=${size}&page=${page}`
-      );
+      const response = await axios.get(url);
       setListings((prevListings) => [...prevListings, ...response.data]);
       if (response.data.length < loadMoreStep) {
         setReachedEnd(true);

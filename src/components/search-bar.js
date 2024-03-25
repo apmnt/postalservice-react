@@ -7,6 +7,7 @@ const SearchBar = ({ onSearch }) => {
     if (event.key === "Enter") {
       console.log("searchTerm", searchTerm);
       onSearch(searchTerm);
+      setSearchTerm("");
     }
   };
 
@@ -15,14 +16,11 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <div
-      className="search-bar-container"
-      style={{ display: window.innerWidth < 768 ? "none" : "block" }}
-    >
+    <div className="search-bar-container">
       <input
         type="text"
         className="search-bar"
-        placeholder="Search..."
+        placeholder="search for something..."
         value={searchTerm}
         onChange={handleChange}
         onKeyDown={handleSearch}

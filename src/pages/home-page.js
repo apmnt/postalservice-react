@@ -2,35 +2,72 @@ import React, { useState } from "react";
 import { PageLayout } from "../components/page-layout";
 import SearchBar from "../components/search-bar";
 import { BaseListings } from "../components/base-listings";
+import RefineView from "../components/refine-view";
 
 export const HomePage = () => {
-  const [searchTerm, setSearchTerm] = useState(""); // Add search state
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchParams, setSearchParams] = useState({
+    keyword: searchTerm,
+    size: "M",
+  });
+  const [isRefineVisible, setIsRefineVisible] = useState(false);
 
   const handleSearch = (term) => {
     console.log("handled seearch in homepage", term);
     setSearchTerm(term);
+    setSearchParams((prevParams) => ({ ...prevParams, keyword: term }));
+  };
+
+  const handleRefineClick = () => {
+    console.log("handle refine click");
+    setIsRefineVisible(!isRefineVisible);
+  };
+
+  const handleCancelClick = () => {
+    setIsRefineVisible(false);
+  };
+
+  const handleApplyFilters = (appliedFilters) => {
+    // add search term to applied filters
+    appliedFilters.keyword = searchTerm;
+    setSearchParams(appliedFilters);
   };
 
   return (
-    <PageLayout onSearch={handleSearch}>
-      <SearchBar onSearch={handleSearch} />
-      <h6>Search Results for: {searchTerm}</h6>
-      <BaseListings
-        key={`mercari-${searchTerm}`}
-        site="mercari"
-        keyword={searchTerm}
-        size="XL"
-        title="Mercari Listings"
-      />
-      <BaseListings
-        key={`fril-${searchTerm}`}
-        site="fril"
-        keyword={searchTerm}
-        size="XL"
-        title="Fril Listings"
-        initialVisibleCount={36}
-        loadMoreStep={36}
-      />
-    </PageLayout>
+    <div>
+      {isRefineVisible ? (
+        <RefineView
+          handleCancelClick={handleCancelClick}
+          onApplyFilters={handleApplyFilters}
+          appliedFilters={searchParams}
+        />
+      ) : (
+        <PageLayout onSearch={handleSearch}>
+          <div
+            className="search-tools-container"
+            style={{ display: "flex", flexDirection: "row" }}
+          >
+            <SearchBar onSearch={handleSearch} />
+            <button onClick={handleRefineClick}>Refine</button>
+          </div>
+          <h6 className="search-results-for">
+            Search results for: {searchTerm}
+          </h6>
+          <BaseListings
+            key={`mercari-${searchTerm}`}
+            site="mercari"
+            searchParams={searchParams}
+            title="Mercari Listings"
+          />
+          <BaseListings
+            key={`fril-${searchTerm}`}
+            site="fril"
+            title="Fril Listings"
+            initialVisibleCount={36}
+            loadMoreStep={36}
+          />
+        </PageLayout>
+      )}
+    </div>
   );
 };
