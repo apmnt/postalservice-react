@@ -2,7 +2,7 @@
   border: 0;
   border-radius: 0.8rem;
 
-  font-family: var(--font-mono);
+  font-family: var(--font-primary);
   font-weight: 600;
   color: var(--white);
 
@@ -79,7 +79,7 @@
 
   margin-right: 1.6rem;
 
-  font-family: var(--font-mono);
+  font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
   line-height: 3.2rem;
