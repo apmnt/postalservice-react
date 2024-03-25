@@ -112,166 +112,171 @@ const RefineView = ({ handleCancelClick, onApplyFilters, appliedFilters }) => {
 
   useEffect(() => {
     const { keyword, ...otherFilters } = appliedFilters;
-    setSelectedFilters(Object.values(otherFilters).flat());
+    const filterValues = Object.values(otherFilters)
+      .flat()
+      .filter((value) => value !== null);
+
+    if (filterValues.length > 0) {
+      setSelectedFilters(filterValues);
+    }
   }, [appliedFilters]);
 
   return (
-    <>
-      <div className="filter-component">
-        <div className="sticky-header">
-          <div className="filter-header">
-            <button className="cancel-button" onClick={handleCancelClick}>
-              CANCEL
-            </button>
-            <span className="keyword">
-              {appliedFilters.keyword
-                ? appliedFilters.keyword
-                : "NO KEYWORD APPLIED"}
-            </span>{" "}
-          </div>
-          <div className="selected-filters">
-            {selectedFilters.length === 0 ? (
-              <div className="select-filter-text">SELECT A FILTER</div>
-            ) : (
-              <>
-                <button className="clear-button" onClick={clearFilters}>
-                  CLEAR
-                </button>
-                <div className="filter-box-container">
-                  {selectedFilters.map((filter) => (
-                    <div key={filter} className="filter-box">
-                      <span className="filter-name">{filter}</span>
-                      <span
-                        className="remove-filter"
-                        onClick={() => removeFilter(filter)}
-                      >
-                        x
-                      </span>
+    <div className="filter-component">
+      <div className="sticky-header">
+        <div className="filter-header">
+          <button className="cancel-button" onClick={handleCancelClick}>
+            CANCEL
+          </button>
+          <span className="keyword">
+            {" "}
+            {appliedFilters.keyword
+              ? "KEYWORD: " + appliedFilters.keyword
+              : "NO KEYWORD APPLIED"}
+          </span>{" "}
+        </div>
+        <div className="selected-filters">
+          {selectedFilters.length === 0 ? (
+            <div className="select-filter-text">SELECT A FILTER</div>
+          ) : (
+            <>
+              <button className="clear-button" onClick={clearFilters}>
+                CLEAR
+              </button>
+              <div className="filter-box-container">
+                {selectedFilters.map((filter) => (
+                  <div key={filter} className="filter-box">
+                    <span className="filter-name">{filter}</span>
+                    <span
+                      className="remove-filter"
+                      onClick={() => removeFilter(filter)}
+                    >
+                      x
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+        <div className="filter-buttons">
+          <button
+            onClick={() => handleOptionClick("designer")}
+            className={visibleOptions === "designer" ? "selected" : ""}
+          >
+            DESIGNERS
+          </button>
+          <button
+            onClick={() => handleOptionClick("category")}
+            className={visibleOptions === "category" ? "selected" : ""}
+          >
+            CATEGORIES
+          </button>
+          <button
+            onClick={() => handleOptionClick("size")}
+            className={visibleOptions === "size" ? "selected" : ""}
+          >
+            SIZES
+          </button>
+        </div>
+      </div>
+      <div className="filter-options">
+        <div className="header-spacer"></div>
+        {visibleOptions === "designer" && (
+          <div className="designer-sections">
+            {Object.entries(designerSections).map(([letter, designers]) => (
+              <div
+                key={letter}
+                className="designer-section"
+                id={`designer-section-${letter}`}
+              >
+                <div className="designer-section-identifier">
+                  <span>{letter}</span>
+                </div>
+                <div className="designer-items">
+                  {designers.map((designer) => (
+                    <div
+                      key={designer}
+                      className={`designer-item ${
+                        selectedFilters.includes(designer) ? "selected" : ""
+                      }`}
+                      onClick={() => handleFilterClick(designer)}
+                    >
+                      <div className="designer-item-indicator">
+                        {selectedFilters.includes(designer) && <span>—</span>}
+                      </div>
+                      <div className="designer-item-name">
+                        <span>{designer}</span>
+                      </div>
                     </div>
                   ))}
                 </div>
-              </>
-            )}
-          </div>
-          <div className="filter-buttons">
-            <button
-              onClick={() => handleOptionClick("designer")}
-              className={visibleOptions === "designer" ? "selected" : ""}
-            >
-              DESIGNERS
-            </button>
-            <button
-              onClick={() => handleOptionClick("category")}
-              className={visibleOptions === "category" ? "selected" : ""}
-            >
-              CATEGORIES
-            </button>
-            <button
-              onClick={() => handleOptionClick("size")}
-              className={visibleOptions === "size" ? "selected" : ""}
-            >
-              SIZES
-            </button>
-          </div>
-        </div>
-        <div className="filter-options">
-          <div className="header-spacer"></div>
-          {visibleOptions === "designer" && (
-            <div className="designer-sections">
-              {Object.entries(designerSections).map(([letter, designers]) => (
-                <div
-                  key={letter}
-                  className="designer-section"
-                  id={`designer-section-${letter}`}
-                >
-                  <div className="designer-section-identifier">
-                    <span>{letter}</span>
-                  </div>
-                  <div className="designer-items">
-                    {designers.map((designer) => (
-                      <div
-                        key={designer}
-                        className={`designer-item ${
-                          selectedFilters.includes(designer) ? "selected" : ""
-                        }`}
-                        onClick={() => handleFilterClick(designer)}
-                      >
-                        <div className="designer-item-indicator">
-                          {selectedFilters.includes(designer) && <span>—</span>}
-                        </div>
-                        <div className="designer-item-name">
-                          <span>{designer}</span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-          {visibleOptions === "category" && (
-            <div className="filter-items">
-              {categories.map((category) => (
-                <div
-                  key={category}
-                  className={`filter-item ${
-                    selectedFilters.includes(category) ? "selected" : ""
-                  }`}
-                  onClick={() => handleFilterClick(category)}
-                >
-                  <div className="filter-item-indicator">
-                    {selectedFilters.includes(category) && <span>—</span>}
-                  </div>
-                  <div className="filter-item-name">
-                    <span>{category}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-          {visibleOptions === "size" && (
-            <div className="filter-items">
-              {sizes.map((size) => (
-                <div
-                  key={size}
-                  className={`filter-item ${
-                    selectedFilters.includes(size) ? "selected" : ""
-                  }`}
-                  onClick={() => handleFilterClick(size)}
-                >
-                  <div className="filter-item-indicator">
-                    {selectedFilters.includes(size) && <span>—</span>}
-                  </div>
-                  <div className="filter-item-name">
-                    <span>{size}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-        {visibleOptions === "designer" && (
-          <div className="rolodex-index__container">
-            <div className="rolodex-index">
-              {Object.keys(designerSections).map((letter) => (
-                <a
-                  key={letter}
-                  className="rolodex-index__letter"
-                  onClick={() => handleLetterClick(letter)}
-                >
-                  <span className="text">{letter}</span>
-                </a>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         )}
-        <button className="apply-filters-button" onClick={handleApplyFilters}>
-          {selectedFilters.length === 0
-            ? "VIEW ALL PRODUCTS"
-            : `APPLY FILTERS (${selectedFilters.length})`}
-        </button>
+        {visibleOptions === "category" && (
+          <div className="filter-items">
+            {categories.map((category) => (
+              <div
+                key={category}
+                className={`filter-item ${
+                  selectedFilters.includes(category) ? "selected" : ""
+                }`}
+                onClick={() => handleFilterClick(category)}
+              >
+                <div className="filter-item-indicator">
+                  {selectedFilters.includes(category) && <span>—</span>}
+                </div>
+                <div className="filter-item-name">
+                  <span>{category}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+        {visibleOptions === "size" && (
+          <div className="filter-items">
+            {sizes.map((size) => (
+              <div
+                key={size}
+                className={`filter-item ${
+                  selectedFilters.includes(size) ? "selected" : ""
+                }`}
+                onClick={() => handleFilterClick(size)}
+              >
+                <div className="filter-item-indicator">
+                  {selectedFilters.includes(size) && <span>—</span>}
+                </div>
+                <div className="filter-item-name">
+                  <span>{size}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
-    </>
+      {visibleOptions === "designer" && (
+        <div className="rolodex-index__container">
+          <div className="rolodex-index">
+            {Object.keys(designerSections).map((letter) => (
+              <a
+                key={letter}
+                className="rolodex-index__letter"
+                onClick={() => handleLetterClick(letter)}
+              >
+                <span className="text">{letter}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+      <button className="apply-filters-button" onClick={handleApplyFilters}>
+        {selectedFilters.length === 0
+          ? "VIEW ALL PRODUCTS"
+          : `APPLY FILTERS (${selectedFilters.length})`}
+      </button>
+    </div>
   );
 };
 
