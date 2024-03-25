@@ -33,10 +33,17 @@ const RefineView = ({ handleCancelClick, onApplyFilters, appliedFilters }) => {
   const sizes = ["XXS", "XS", "S", "M", "L", "XL", "XXL", "XXXL"];
 
   const handleFilterClick = (filter) => {
-    if (selectedFilters.includes(filter)) {
-      setSelectedFilters(selectedFilters.filter((f) => f !== filter));
+    if (sizes.includes(filter)) {
+      setSelectedFilters((prevFilters) => {
+        const otherFilters = prevFilters.filter((f) => !sizes.includes(f));
+        return [...otherFilters, filter];
+      });
     } else {
-      setSelectedFilters([...selectedFilters, filter]);
+      if (selectedFilters.includes(filter)) {
+        setSelectedFilters(selectedFilters.filter((f) => f !== filter));
+      } else {
+        setSelectedFilters([...selectedFilters, filter]);
+      }
     }
   };
 
