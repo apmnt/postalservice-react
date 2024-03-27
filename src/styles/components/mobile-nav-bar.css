@@ -135,6 +135,13 @@
   font-weight: 500;
   font-size: 40px;
   font-family: var(--font-primary);
+  transition: font-size 0.2s ease, margin 0.2s ease;
+}
+
+.nav-bar__title-mobile.small {
+  margin-top: -10px;
+  font-size: 16px;
+  font-weight: 100;
 }
 
 @media only screen and (max-width: 640px) and (hover: none) {
