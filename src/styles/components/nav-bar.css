@@ -4,11 +4,13 @@
   justify-content: center;
   flex-shrink: 0;
   width: 100%;
-
-  box-shadow: rgb(90 95 102) 0-1.5px 0 inset;
-
   z-index: 300;
-  backdrop-filter: blur(15px); /* Add this line */
+
+  backdrop-filter: blur(20px);
+  background: linear-gradient(
+    rgba(255, 255, 255, 1) 30%,
+    rgba(255, 255, 255, 0.8)
+  );
 }
 
 .nav-bar {
