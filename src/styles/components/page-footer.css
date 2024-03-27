@@ -7,9 +7,7 @@
 
   margin-top: 2.4rem;
 
-  background-color: var(--dark-aluminium);
-
-  color: var(--light-aluminium);
+  color: var(black);
   font-weight: 500;
   text-align: center;
 
@@ -17,6 +15,8 @@
 
   font-size: 1.6rem;
   line-height: 2.4rem;
+
+  background: linear-gradient(rgba(255, 255, 255), rgb(192, 192, 192));
 }
 
 .page-footer-grid {
@@ -105,11 +105,11 @@
 .page-footer__hyperlink,
 .page-footer__hyperlink:active,
 .page-footer__hyperlink:visited {
-  color: var(--white);
+  color: var(--black);
 }
 
 .page-footer__hyperlink:hover {
-  color: var(--aluminium);
+  color: grey;
 }
 
 @media only screen and (max-width: 960px) {
