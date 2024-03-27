@@ -41,5 +41,6 @@
 }
 
 .search-results-for {
-  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 100;
 }
