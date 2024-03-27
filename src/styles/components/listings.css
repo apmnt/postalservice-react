@@ -23,11 +23,11 @@
 }
 
 .listing__text {
-  font-size: small;
   margin-top: 5px;
 }
 
 .listing__text * {
+  font-size: 10px;
   margin: 5px;
   margin-left: 0;
   overflow: hidden;
@@ -36,17 +36,16 @@
 }
 
 .listings__title {
-  font-size: 2rem;
-  text-align: center;
+  position: sticky;
+  top: 35px;
+  z-index: 1000;
+  font-weight: 100;
+  width: 80%;
 }
 
 .listing__title {
   margin-top: 0;
   font-style: italic;
-}
-
-.listings__title {
-  font-weight: 100;
 }
 
 .listings__line {
